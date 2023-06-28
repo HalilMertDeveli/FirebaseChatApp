@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_chat_app/pages/auth/register_page.dart';
 import 'package:flutter_firebase_chat_app/widgets/widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -123,7 +124,13 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.black,
                         decoration: TextDecoration.underline,
                       ),
-                      recognizer: TapGestureRecognizer()..onTap = () {},
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          nextScreen(
+                            context,
+                            RegisterPage(),
+                          );
+                        },
                     ),
                   ],
                 ),
