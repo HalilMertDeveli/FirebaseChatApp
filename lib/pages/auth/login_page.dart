@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_chat_app/widgets/widget.dart';
 
@@ -82,18 +83,59 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 //cheking validor
                 validator: (String? val) {
-                  if (val!.length>6) {
+                  if (val!.length < 6) {
                     return "password should be more longer then six";
-                  }
-                  else{
+                  } else {
                     return null;
                   }
                 },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    elevation: 1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(49),
+                    ),
+                  ),
+                  child: const Text(
+                    "Sign In",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  onPressed: () {
+                    login();
+                  },
+                ),
+              ),
+              Text.rich(
+                TextSpan(
+                  text: "Don't have an account ? ",
+                  style: TextStyle(color: Colors.black, fontSize: 14),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "Register Here",
+                      style: TextStyle(
+                        color: Colors.black,
+                        decoration: TextDecoration.underline,
+                      ),
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    ),
+                  ],
+                ),
               )
             ],
           ),
         ),
       ),
     ));
+  }
+
+  login() {
+    if (formKey.currentState!.validate()) {}
   }
 }
