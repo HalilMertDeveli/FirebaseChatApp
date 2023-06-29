@@ -30,6 +30,7 @@ void nextScreen(BuildContext context, page) {
     ),
   );
 }
+
 void nextScreenReplacment(BuildContext context, page) {
   Navigator.pushReplacement(
     context,
@@ -37,4 +38,20 @@ void nextScreenReplacment(BuildContext context, page) {
       builder: (context) => page,
     ),
   );
+}
+
+void showSnackBar(context, color, message) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(
+      message.toString(),
+      style: TextStyle(fontSize: 14),
+    ),
+    backgroundColor: color,
+    duration: const Duration(seconds: 5),
+    action: SnackBarAction(
+      label: "OK",
+      onPressed: () {},
+      textColor: Colors.white,
+    ),
+  ));
 }
