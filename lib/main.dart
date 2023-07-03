@@ -24,7 +24,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool _isSignedIn = false;
 
-
   @override
   void initState() {
     super.initState();
@@ -33,10 +32,12 @@ class _MyAppState extends State<MyApp> {
 
   void getUserLoggedInStatus() async {
     await HelperFunctions.getUserLoggedInStatus().then((bool? value) {
-      if (value != bool) {
-        _isSignedIn = value ?? false;
+      if (value != null) {
+        setState(() {
+          _isSignedIn = value;
+        });
       }
-    } );
+    });
   }
 
   @override
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
         primaryColor: Constant().primaryColor,
-        scaffoldBackgroundColor: Colors.white
+        scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
       home: _isSignedIn ? HomePage() : LoginPage(),

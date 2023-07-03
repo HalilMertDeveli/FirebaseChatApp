@@ -29,6 +29,9 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 'Groupie ',
                 style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),

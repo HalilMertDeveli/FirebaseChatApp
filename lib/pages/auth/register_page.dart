@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_chat_app/helper/helper_function.dart';
 import 'package:flutter_firebase_chat_app/pages/auth/login_page.dart';
+import 'package:flutter_firebase_chat_app/pages/home_page.dart';
 import 'package:flutter_firebase_chat_app/service/auth_service.dart';
 import 'package:flutter_firebase_chat_app/widgets/widget.dart';
 
@@ -27,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: _isLoading //get thigs note 
+        body: _isLoading ==true //get thigs note 
             ? Center(
                 child: CircularProgressIndicator(
                   color: Theme.of(context).primaryColor,
@@ -42,6 +44,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SizedBox(height: 20,),
+
                         Text(
                           'Groupie ',
                           style: TextStyle(
@@ -194,9 +198,14 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() {
         _isLoading = true;
       });
-      await authService.registerUserWithEmailAndPassword(fullName, email, password).then((value) {
+      await authService.registerUserWithEmailAndPassword(fullName, email, password).then((value) async{
         if (value== true) {
           //saving shared preferences state 
+          await HelperFunctions.saveUserLoggedInStatus(true);
+          await HelperFunctions.setUserEmailSf(email);
+          await HelperFunctions.saveUserNameSf(fullName);
+          nextScreen(context, HomePage());
+
         }
         else{
           showSnackBar(context, Colors.red,  value);
