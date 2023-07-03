@@ -5,7 +5,23 @@ import 'package:flutter_firebase_chat_app/service/database_service.dart';
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  //THERE WILL BE LOGIN FUNCTOIN
+  //THERE WILL BE LOGIN Function
+  Future loginUserNameAndPassword(
+      String email, String password) async {
+    try {
+      User user = (await firebaseAuth.signInWithEmailAndPassword(
+              email: email, password: password))
+          .user!;
+
+      if (user != null) {
+        //call our database service to update the data
+
+        return true;
+      }
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
 
   //THERE WILL BE REGISTER FUNCTION
   Future registerUserWithEmailAndPassword(
@@ -17,7 +33,7 @@ class AuthService {
 
       if (user != null) {
         //call our database service to update the data
-        await DatabaseService(uid: user.uid).updateUserData(fullName, email);
+        await DatabaseService(uid: user.uid).savingUserData(fullName, email);
 
         return true;
       }
