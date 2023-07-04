@@ -31,7 +31,7 @@ void nextScreen(BuildContext context, page) {
   );
 }
 
-void nextScreenReplacment(BuildContext context, page) {
+void nextScreenReplace(BuildContext context, page) {
   Navigator.pushReplacement(
     context,
     MaterialPageRoute(
