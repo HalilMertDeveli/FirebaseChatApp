@@ -85,8 +85,8 @@ class _HomePageState extends State<HomePage> {
               selectedColor: Theme.of(context).primaryColor,
               selected: true,
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              leading: const Icon(Icons.group),
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5,),
+              leading: const Icon(Icons.group,),
               title: const Text(
                 "Groups",
                 style: TextStyle(color: Colors.black),
@@ -94,60 +94,64 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                nextScreen(context, const ProfilePage());
+                nextScreen(
+                  context,
+                   ProfilePage(userName:userName,email:email,),
+                );
               },
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              leading: const Icon(Icons.abc),
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5,),
+              leading: const Icon(Icons.hub,),
               title: const Text(
                 "Profile",
                 style: TextStyle(color: Colors.black),
               ),
             ),
             ListTile(
-            onTap: () async {
-              showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: const Text("Logout"),
-                      content: const Text("Are you sure you want to logout?"),
-                      actions: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.cancel,
-                            color: Colors.red,
+              onTap: () async {
+                showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Logout"),
+                        content: const Text("Are you sure you want to logout?"),
+                        actions: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              Icons.cancel,
+                              color: Colors.red,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () async {
-                            await authService.signOut();
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) =>  LoginPage()),
-                                (route) => false);
-                          },
-                          icon: const Icon(
-                            Icons.done,
-                            color: Colors.green,
+                          IconButton(
+                            onPressed: () async {
+                              await authService.signOut();
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                  (route) => false);
+                            },
+                            icon: const Icon(
+                              Icons.done,
+                              color: Colors.green,
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  });
-            },
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text(
-              "Logout",
-              style: TextStyle(color: Colors.black),
-            ),
-          )
+                        ],
+                      );
+                    });
+              },
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text(
+                "Logout",
+                style: TextStyle(color: Colors.black),
+              ),
+            )
           ],
         ),
       ),
