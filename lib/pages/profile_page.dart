@@ -37,68 +37,68 @@ class _ProfilePage extends State<ProfilePage> {
         ),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 50),
-          children: [
-            Icon(
-              Icons.person_2,
-              size: 150,
-              color: Colors.grey,
+          child: ListView(
+        padding: EdgeInsets.symmetric(vertical: 50),
+        children: [
+          Icon(
+            Icons.person_2,
+            size: 150,
+            color: Colors.grey,
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Text(
+            widget.userName,
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
             ),
-            const SizedBox(
-              height: 50,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            widget.email,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
             ),
-            Text(
-              widget.userName,
+            textAlign: TextAlign.center,
+          ),
+          Divider(
+            height: 3,
+          ),
+          ListTile(
+            leading: Icon(Icons.group),
+            title: Text("Group"),
+            selected: false,
+            onTap: () {
+              nextScreenReplace(
+                context,
+                HomePage(),
+              );
+            },
+          ),
+          SizedBox(height: 10),
+          ListTile(
+            iconColor: Theme.of(context).primaryColor,
+            leading: Icon(Icons.person,color:Theme.of(context).primaryColor,),
+            title: const Text(
+              "Profile",
               style: TextStyle(
+                color: Colors.black,
                 fontSize: 15,
-                color: Colors.black,
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              widget.email,
-              style: TextStyle(
-                color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 15,
               ),
-              textAlign: TextAlign.center,
             ),
-            Divider(
-              height: 3,
-            ),
-            ListTile(
-              leading: Icon(Icons.group),
-              title: Text("Group"),
-              selected: false,
-              onTap: () {
-                nextScreenReplace(
-                  context,
-                  HomePage(),
-                );
-              },
-            ),
-            SizedBox(height: 10),
-            ListTile(
-              iconColor: Theme.of(context).primaryColor,
-              leading: Icon(Icons.person),
-              title: const Text(
-                "Profile",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              selected: true,
-              onTap: () {},
-            ),
-            ListTile(
+            selected: true,
+            onTap: () {},
+          ),
+          ListTile(
             onTap: () async {
               showDialog(
                   barrierDismissible: false,
@@ -122,7 +122,8 @@ class _ProfilePage extends State<ProfilePage> {
                             await authService.signOut();
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                    builder: (context) =>  LoginPage()),
+                                  builder: (context) => LoginPage(),
+                                ),
                                 (route) => false);
                           },
                           icon: const Icon(
@@ -144,6 +145,6 @@ class _ProfilePage extends State<ProfilePage> {
           )
         ],
       )),
-         
     );
-}}
+  }
+}
