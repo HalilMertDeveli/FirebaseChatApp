@@ -6,6 +6,7 @@ import 'package:flutter_firebase_chat_app/pages/profile_page.dart';
 import 'package:flutter_firebase_chat_app/pages/search_page.dart';
 import 'package:flutter_firebase_chat_app/service/auth_service.dart';
 import 'package:flutter_firebase_chat_app/service/database_service.dart';
+import 'package:flutter_firebase_chat_app/widgets/group_tile.dart';
 import 'package:flutter_firebase_chat_app/widgets/widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,6 +28,16 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     gettingUserData();
+  }
+
+  //string manipulation for groupTile
+  String getId(String res) {
+    return res.substring(0, res.indexOf("_"));
+  }
+
+  //we wrote for groupTile
+  String getName(String res) {
+    return res.substring(res.indexOf("_") + 1);
   }
 
   gettingUserData() async {
@@ -301,9 +312,15 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.data['groups'] != null) {
             if (snapshot.data['groups'].length != 0) {
               return ListView.builder(
-                itemCount:snapshot.data['groups'].length,
-                itemBuilder:(context, index) {
-                  return Text("HELLO world");
+                itemCount: snapshot.data['groups'].length,
+                itemBuilder: (context, index) {
+                  int reversedIndex =
+                      snapshot.data['groups'].length - index - 1;
+
+                  return GroupTile(
+                      userName: getId(snapshot.data['groups'][reversedIndex]),
+                      groupName: getName(snapshot.data['groups'][reversedIndex]),
+                      groupId: snapshot.data['fullName']);
                 },
               );
             } else {
