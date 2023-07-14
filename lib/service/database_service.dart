@@ -20,6 +20,9 @@ class DatabaseService {
       "uid": uid
     });
   }
+   getUserGroups() async {
+    return userCollection.doc(uid).snapshots();
+  }
 
   Future gettingUserData(String email) async {
     QuerySnapshot snapshot =
