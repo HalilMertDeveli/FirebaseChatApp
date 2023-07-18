@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_chat_app/helper/helper_function.dart';
@@ -159,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                             await authService.signOut();
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                    builder: (context) =>  LoginPage()),
+                                    builder: (context) => LoginPage()),
                                 (route) => false);
                           },
                           icon: const Icon(

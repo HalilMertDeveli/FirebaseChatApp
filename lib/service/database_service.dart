@@ -20,7 +20,7 @@ class DatabaseService {
       "uid": uid
     });
   }
-   getUserGroups() async {
+   Future<Stream<DocumentSnapshot<Object?>>> getUserGroups() async {
     return userCollection.doc(uid).snapshots();
   }
 
