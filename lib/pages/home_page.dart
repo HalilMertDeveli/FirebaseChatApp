@@ -66,12 +66,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {
-                nextScreen(context, const SearchPage());
-              },
-              icon: const Icon(
-                Icons.search,
-              ))
+            onPressed: () {
+              nextScreen(context, const SearchPage());
+            },
+            icon: const Icon(
+              Icons.search,
+            ),
+          )
         ],
         elevation: 0,
         centerTitle: true,
@@ -120,11 +121,12 @@ class _HomePageState extends State<HomePage> {
           ListTile(
             onTap: () {
               nextScreenReplace(
-                  context,
-                  ProfilePage(
-                    userName: userName,
-                    email: email,
-                  ));
+                context,
+                ProfilePage(
+                  userName: userName,
+                  email: email,
+                ),
+              );
             },
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -157,9 +159,11 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () async {
                             await authService.signOut();
                             Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) => LoginPage()),
-                                (route) => false);
+                              MaterialPageRoute(
+                                builder: (context) => LoginPage(),
+                              ),
+                              (route) => false,
+                            );
                           },
                           icon: const Icon(
                             Icons.done,
