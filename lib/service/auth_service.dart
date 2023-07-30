@@ -33,7 +33,7 @@ class AuthService {
 
       if (user != null) {
         //call our database service to update the data
-        await DatabaseService(uid: user.uid).savingUserData(fullName, email);
+        await DatabaseService(uid: user.uid). savingUserData(fullName, email);
 
         return true;
       }

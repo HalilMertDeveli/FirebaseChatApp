@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
-  final String uid;
-  DatabaseService({required this.uid});
+  final String? uid;
+  DatabaseService({ this.uid});
 
   //referance for our collection
   final CollectionReference userCollection =
@@ -20,7 +20,8 @@ class DatabaseService {
       "uid": uid
     });
   }
-   Future<Stream<DocumentSnapshot<Object?>>> getUserGroups() async {
+
+  Future<Stream<DocumentSnapshot<Object?>>> getUserGroups() async {
     return userCollection.doc(uid).snapshots();
   }
 
@@ -43,7 +44,7 @@ class DatabaseService {
       "admin": "${id}_$userName",
       "members": [],
       "groupId": "",
-      "recentMessage": "",
+      "recentMessage": "", 
       "recentMessageSender": "",
     });
     //update members
@@ -52,11 +53,29 @@ class DatabaseService {
       "groupId": groupDocumentReference.id,
     });
 
-    DocumentReference userDocumentReference =  userCollection.doc(uid);
+    DocumentReference userDocumentReference = userCollection.doc(uid);
 
     return await userDocumentReference.update({
-      "groups":FieldValue.arrayUnion(["${groupDocumentReference.id}_$groupName"]),
+      "groups":
+          FieldValue.arrayUnion(["${groupDocumentReference.id}_$groupName"]),
     });
+  }
 
+  getChats(String groupId) async {
+    return groupCollection
+        .doc(groupId)
+        .collection("messages")
+        .orderBy("time")
+        .snapshots();
+  }
+  Future getGroupAdmin(String groupId)async{
+    DocumentReference d = groupCollection.doc(groupId);
+    DocumentSnapshot documentSnapshot = await d.get();
+    return documentSnapshot['admin'];
+  }
+
+  //getting group members
+  Future<Stream<DocumentSnapshot<Object?>>> getGroupMember(groupId)async{
+    return groupCollection.doc(groupId).snapshots();
   }
 }
