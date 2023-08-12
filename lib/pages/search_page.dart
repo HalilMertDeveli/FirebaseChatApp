@@ -111,6 +111,8 @@ class _SearchPageState extends State<SearchPage> {
   }
   
   Widget groupTile(String userName,String groupId,String groupName,String admin) {
+    //function -> check whether user alredy has 'a group
+    
     return Text("Hello world");
   }
   
