@@ -48,7 +48,7 @@ class _GroupInfoState extends State<GroupInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Group info"),
+        title: const Text("Dessses"),
         elevation: 0,
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,

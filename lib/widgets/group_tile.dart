@@ -53,7 +53,7 @@ class _GroupTileState extends State<GroupTile> {
             ),
           ),
           subtitle: Text(
-            "Join group with ${widget.userName}",
+            "Hastalık  ${widget.userName} tarafından eklendi",
             style: const TextStyle(fontSize: 13),
           ),
         ),

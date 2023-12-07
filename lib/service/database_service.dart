@@ -35,7 +35,7 @@ class DatabaseService {
   getUserGroup() async {
     return userCollection.doc(uid).snapshots();
   }
-
+//binance
   //Creating a group
   Future createGroup(String userName, String id, String groupName) async {
     DocumentReference groupDocumentReference = await groupCollection.add({
@@ -105,8 +105,8 @@ class DatabaseService {
     List<dynamic> groups = await documentSnapshot['groups'];
 
     if (groups.contains("${groupId}_$groupName")) {
-      await userDocumentReference.update({"groups":FieldValue.arrayRemove(["${groupId}_$groupName"])})
-      await groupDocumentReference.update({"groups":FieldValue.arrayRemove(["${uid}_$userName"])})
+      await userDocumentReference.update({"groups":FieldValue.arrayRemove(["${groupId}_$groupName"])});
+      await groupDocumentReference.update({"groups":FieldValue.arrayRemove(["${uid}_$userName"])});
 
     }
 

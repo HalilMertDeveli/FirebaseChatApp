@@ -74,7 +74,7 @@ class _ProfilePage extends State<ProfilePage> {
           ),
           ListTile(
             leading: Icon(Icons.group),
-            title: Text("Group"),
+            title: Text("Hastalıklarım"),
             selected: false,
             onTap: () {
               nextScreenReplace(

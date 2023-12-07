@@ -47,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         SizedBox(height: 20,),
 
                         Text(
-                          'Groupie ',
+                          'Kronik sağlık uygulaması',
                           style: TextStyle(
                               fontSize: 40, fontWeight: FontWeight.bold),
                         ),
@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 10,
                         ),
                         Text(
-                          'Create your account and chat with your friends',
+                          'Hesabınız yok ise lütfen buradan üye olunuz',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w400),
                         ),
@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         TextFormField(
                           decoration: textInputDecoration.copyWith(
-                            labelText: "Full Name",
+                            labelText: "İsminizi giriniz",
                             prefixIcon: Icon(
                               Icons.near_me,
                               color: Theme.of(context).primaryColor,
@@ -93,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         TextFormField(
                           decoration: textInputDecoration.copyWith(
-                            labelText: "Email",
+                            labelText: "Email adresinizi giriniz",
                             prefixIcon: Icon(
                               Icons.email,
                               color: Theme.of(context).primaryColor,
@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         TextFormField(
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(
-                            labelText: "Password",
+                            labelText: "Şifreinizi giriniz",
                             prefixIcon: Icon(
                               Icons.lock,
                               color: Theme.of(context).primaryColor,
@@ -155,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                             child: const Text(
-                              "Register",
+                              "Üyelik oluştur",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
@@ -166,11 +166,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         Text.rich(
                           TextSpan(
-                            text: "Already have an account ",
+                            text: "Zaten hesabınız var mı ?",
                             style: TextStyle(color: Colors.black, fontSize: 14),
                             children: <TextSpan>[
                               TextSpan(
-                                text: "Login Here",
+                                text: "Buradan giriş yapınız",
                                 style: TextStyle(
                                   color: Colors.black,
                                   decoration: TextDecoration.underline,

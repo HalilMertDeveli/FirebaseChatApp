@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 20,
                         ),
                         Text(
-                          'Groupie ',
+                          'Kronik sağlık uygulaması',
                           style: TextStyle(
                               fontSize: 40, fontWeight: FontWeight.bold),
                         ),
@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 10,
                         ),
                         Text(
-                          'Login now to see what theya are talking',
+                          'Merhaba Kronik sağlık uygulamasına hoşgeldiniz, hastalıklarınızı görmek için lütfen giriş yapınız',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w400),
                         ),
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                         TextFormField(
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(
-                            labelText: "Password",
+                            labelText: "Şifre",
                             prefixIcon: Icon(
                               Icons.lock,
                               color: Theme.of(context).primaryColor,
@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             child: const Text(
-                              "Sign In",
+                              " Giriş yap",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
@@ -137,11 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Text.rich(
                           TextSpan(
-                            text: "Don't have an account ? ",
+                            text: "Üyeliğiniz yok mu ? ",
                             style: TextStyle(color: Colors.black, fontSize: 14),
                             children: <TextSpan>[
                               TextSpan(
-                                text: "Register Here",
+                                text: "Üye Olunuz",
                                 style: TextStyle(
                                   color: Colors.black,
                                   decoration: TextDecoration.underline,
